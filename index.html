@@ -1,185 +1,186 @@
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-    <title>CHURRASCO - Lucas De Freitas Roberto</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            background-image: linear-gradient(to right, rgb(106, 140, 233), rgb(233, 233, 233));
+    <head>
+        <title>CHURRASCO - Lucas De Freitas Roberto</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                background-image: linear-gradient(to right, rgb(106, 140, 233), rgb(233, 233, 233));
 
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 10px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="number"] {
-            width: 90%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }   
-
-        .form-group input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .form-group textarea[id="guestList"] {
-            color: rgb(12, 12, 12);
-            width: 90%;
-            padding: 10px 20px;
-            border-radius: 10px;
-            border-style: groove;   
-            cursor: pointer;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        img {
-            max-width: 50px;
-            max-height: 50px;
-        }
-
-        .result {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-
-        .result ul {
-            list-style: none;
-            padding: 0;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <h1>CHURRASCO</h1>
-        <h1>Lucas De Freitas Roberto </h1>
-
-        <div class="form-group">
-            <label for="foodItem">Lista de desejos para o churrasco:</label>
-            <input type="text" id="foodItem" placeholder="Digite um item (ex: carne)">
-        </div>
-
-        <div class="form-group">
-            <input type="submit" value="Adicionar" onclick="addItemToList()">
-        </div>
-
-        <div class="form-group">
-            <label for="guestList">Lista de convidados:</label>
-            <textarea id="guestList"
-                placeholder="Digite a lista de convidados (ex: Paula, Filho 1, Filho 2)"></textarea>
-        </div>
-
-        <div class="form-group">
-            <input type="submit" value="Calcular" onclick="calculateConsumption()">
-        </div>
-
-        <h2>Lista de produtos:</h2>
-        <table id="churrascoTable">
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Quantidade</th>
-                </tr>
-            </thead>
-            <tbody id="churrascoTableBody">
-
-            </tbody>
-        </table>
-
-        <div class="result">
-            <h2>Quantidade de consumo estimado:</h2>
-            <ul id="consumptionList">
-
-            </ul>
-        </div>
-    </div>
-
-    <script>
-        var itemList = [];
-
-        function addItemToList() {
-            var foodItemInput = document.getElementById("foodItem");
-            var foodItem = foodItemInput.value;
-
-            if (foodItem) {
-                itemList.push(foodItem);
-
-                var tableBody = document.getElementById("churrascoTableBody");
-                var row = tableBody.insertRow();
-                var cell1 = row.insertCell(0);
-                var cell2 = row.insertCell(1);
-
-                cell1.innerHTML = foodItem;
-                cell2.innerHTML = '1';
-
-                foodItemInput.value = "";
             }
-        }
 
-        function calculateConsumption() {
-            var guestListInput = document.getElementById("guestList");
-            var guestList = guestListInput.value.split(",");
-
-            var totalGuests = guestList.length;
-            var totalItems = itemList.length;
-
-            var consumptionList = document.getElementById("consumptionList");
-            consumptionList.innerHTML = "";
-
-            for (var i = 0; i < totalItems; i++) {
-                var item = itemList[i];
-                var quantity = parseInt(document.getElementById("churrascoTableBody").rows[i].cells[1].innerHTML);
-
-                var consumption = Math.ceil(quantity / totalGuests);
-
-                var listItem = document.createElement("li");
-                listItem.innerHTML = item + ": " + consumption + " unidade(s)";
-                consumptionList.appendChild(listItem);
+            h1 {
+                text-align: center;
             }
-        }
-    </script>
-</body>
 
-</html>
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #ffffff;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .form-group {
+                margin-bottom: 10px;
+            }
+
+            .form-group label {
+                display: block;
+                font-weight: bold;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="number"] {
+                width: 90%;
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+            }   
+
+            .form-group input[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .form-group textarea[id="guestList"] {
+                color: rgb(12, 12, 12);
+                width: 90%;
+                padding: 10px 20px;
+                border-radius: 10px;
+                border-style: groove;   
+                cursor: pointer;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            th,
+            td {
+                text-align: left;
+                padding: 8px;
+                border-bottom: 1px solid #ddd;
+            }
+
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+
+            img {
+                max-width: 150px;
+                max-height: 150px;
+            }
+
+            .result {
+                margin-top: 20px;
+                font-weight: bold;
+            }
+
+            .result ul {
+                list-style: none;
+                padding: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <img src="https://espetinhodesucesso.com.br/wp-content/uploads/2022/11/churrasco-de-pobre-carnes-cardapio.jpg" alt="">
+            <h1>CHURRASCO</h1>
+            <h1>Lucas De Freitas Roberto </h1>
+           
+            <div class="form-group">
+                <label for="foodItem">Lista de desejos para o churrasco:</label>
+                <input type="text" id="foodItem" placeholder="Digite um item (ex: carne)">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Adicionar" onclick="addItemToList()">
+            </div>
+
+            <div class="form-group">
+                <label for="guestList">Lista de convidados:</label>
+                <textarea id="guestList"
+                    placeholder="Digite a lista de convidados (ex: Paula, Filho 1, Filho 2)"></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Calcular" onclick="calculateConsumption()">
+            </div>
+
+            <h2>Lista de produtos:</h2>
+            <table id="churrascoTable">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody id="churrascoTableBody">
+
+                </tbody>
+            </table>
+
+            <div class="result">
+                <h2>Quantidade de consumo estimado:</h2>
+                <ul id="consumptionList">
+
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            var itemList = [];
+
+            function addItemToList() {
+                var foodItemInput = document.getElementById("foodItem");
+                var foodItem = foodItemInput.value;
+
+                if (foodItem) {
+                    itemList.push(foodItem);
+
+                    var tableBody = document.getElementById("churrascoTableBody");
+                    var row = tableBody.insertRow();
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+
+                    cell1.innerHTML = foodItem;
+                    cell2.innerHTML = '1';
+
+                    foodItemInput.value = "";
+                }
+            }
+
+            function calculateConsumption() {
+                var guestListInput = document.getElementById("guestList");
+                var guestList = guestListInput.value.split(",");
+
+                var totalGuests = guestList.length;
+                var totalItems = itemList.length;
+
+                var consumptionList = document.getElementById("consumptionList");
+                consumptionList.innerHTML = "";
+
+                for (var i = 0; i < totalItems; i++) {
+                    var item = itemList[i];
+                    var quantity = parseInt(document.getElementById("churrascoTableBody").rows[i].cells[1].innerHTML);
+
+                    var consumption = Math.ceil(quantity / totalGuests);
+
+                    var listItem = document.createElement("li");
+                    listItem.innerHTML = item + ": " + consumption + " unidade(s)";
+                    consumptionList.appendChild(listItem);
+                }
+            }
+        </script>
+    </body>
+
+    </html>
